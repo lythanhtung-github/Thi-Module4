@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/image/logo-icon.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/bootstrap/v5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/v6.2.0/css/all.min.css">
+    <script src="/assets/bootstrap/v5.2/js/bootstrap.bundle.min.js"></script>
+    <title>List City</title>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>List of City</h1>
+            </div>
+            <div class="col-sm-7">
+                <a class="btn btn-outline-light" href="/city/create" title="Hello">
+                    <i class="fa-solid fa-square-plus"></i> Add New City</a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover" id="tb-customer">
+        <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Quốc gia</th>
+            <th class="text-center">Diện tích</th>
+            <th class="text-center">Dân số</th>
+            <th class="text-center">GDP</th>
+            <th class="text-center">Giới thiệu</th>
+            <th colspan="2" class="text-center">Thao tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="item : ${cityList}">
+            <tr>
+                <td th:text="${item.id}" class="text-start"></td>
+                <td class="text-start"><a th:text="${item.cityName}" th:href="@{/view/__${item.id}__}"></a></td>
+                <td th:text="${item.country.countryName}" class="text-start"></td>
+                <td th:text="${item.area}" class="text-start"></td>
+                <td th:text="${item.population}" class="text-start"></td>
+                <td th:text="${item.GDP}" class="text-start"></td>
+                <td th:text="${item.description}" class="text-start"></td>
+                <td>
+                    <a class="btn btn btn-outline-dark"
+                       th:href="${'/city/edit/' + item.id}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-info"
+                       th:href="${'/city/delete/' + item.id}">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <div class="footer">
+        <div id="message-alert">
+            <th:block th:if="${error}">
+                <div class="alert-danger">
+                    <h5 th:text="${error}"></h5>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>

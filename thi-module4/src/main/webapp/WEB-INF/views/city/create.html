@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/image/logo-icon.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/bootstrap/v5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/v6.2.0/css/all.min.css">
+    <script src="/assets/bootstrap/v5.2/js/bootstrap.bundle.min.js"></script>
+    <title>Create City</title>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>Create city</h1>
+            </div>
+            <div class="col-sm-7">
+                <a class="btn btn-outline-light" href="/city"><i
+                        class="fa fa-list"></i> List of city
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <form method="post" th:object="${city}">
+            <fieldset class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Tên:</label>
+                    <input type="text" class="form-control" th:field="*{cityName}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Quốc gia:</label>
+                    <select th:field="*{country}" class="form-select">
+                        <option th:each="item : ${countryList}" th:value="${item.id}"
+                                th:text="${item.countryName}"></option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Diện tích:</label>
+                    <input type="number" class="form-control" min ="1"
+                           th:field="*{area}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Dân số:</label>
+                    <input type="number" class="form-control" min ="1"
+                           th:field="*{population}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">GPD:</label>
+                    <input type="number" class="form-control" min ="1"
+                           th:field="*{GDP}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">GPD:</label>
+                   <textarea class="form-control" rows="3"
+                             th:field="*{description}">
+
+                   </textarea>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" id="btnCreateCustomer" class="btn btn-outline-primary">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Create city
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="footer">
+        <div id="message-alert">
+            <th:block th:if="${success} == true">
+                <div class="alert-success">
+                    <h5><span>Thêm mới thành phố thành công</span></h5>
+                </div>
+            </th:block>
+            <th:block th:if="${error} == true">
+                <div class="alert-danger">
+                    <h5>Vui lòng sửa lỗi bên dưới:</h5>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('city.*')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+h1 {
+    color: white;
+}
+
+.head {
+    padding: 10px;
+    background-color: #1baa09;
+}
+
+.head .btn {
+    float: right;
+    min-width: 50px;
+    outline: none !important;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#tb-customer thead{
+    background-color: #014d05;
+    color: white;
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 0;
+    /*padding-right: 50px;*/
+    color: #0f5132;
+}
+
+#message-alert {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+}
+
+.alert-success {
+    padding: 1rem 135px;
+    background-color: #a9e2c8;
+}
+
+.alert-danger {
+    padding: 1rem 135px;
+    background-color: #880d19;
+    color: #ffffff;
+}
+
+.alert-danger h5 {
+    margin-left: -18px;
+}
+
+.alert-danger ul {
+    margin-left: -2rem;
+}
+
+input:read-only {
+    background-color: #b0b5be;
+}
+input:read-only:focus{
+    background-color: #b0b5be;
+}
+
+.error{
+    color: red;
+}

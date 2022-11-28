@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/image/logo-icon.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/bootstrap/v5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/v6.2.0/css/all.min.css">
+    <script src="/assets/bootstrap/v5.2/js/bootstrap.bundle.min.js"></script>
+    <title>Delete</title>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>Delete city</h1>
+            </div>
+            <div class="col-sm-7">
+                <a class="btn btn-outline-light" href="/city"><i
+                        class="fa fa-list"></i> List of city
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <form method="post" th:object="${city}">
+            <fieldset class="row g-3">
+                <input th:text="*{id}" th:field="*{id}" style="display: none">
+                <div class="col-md-12">
+                    <h1 style="color:black">Bạn có chắc chắ muốn xóa thành phố</h1>
+                    <h1 style="color:black" th:text="*{cityName}"></h1>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-outline-danger">Yes</button>
+                    <a class="btn btn-outline-dark" href="/city">Hủy</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="footer">
+        <div id="message-alert">
+            <th:block th:if="${error} == true">
+                <div class="alert-danger">
+                    <h5 th:text="${error}"></h5>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>
